@@ -30,14 +30,14 @@ const MainPage = () => {
 
   useMemo(() => {
     // 로그인 이후 최초 접속 시 API 통신
-    if (isLoginState === 1) {
+//    if (isLoginState === 1) {
       const fetchData = async () => {
         try {
           await GetShowAPI(setShow);
         } catch (error) {
           console.error(error);
         }
-      };
+  //    };
       fetchData();
       console.log('useMemo 데이터 가져오기 실행...');
       setIsLoginState(2);
