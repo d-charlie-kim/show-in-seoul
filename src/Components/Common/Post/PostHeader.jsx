@@ -5,18 +5,20 @@ import { useRecoilValue } from 'recoil';
 
 // 이미지
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
-import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 
 // recoil
-import { MyAccountName } from '../../../Atom/atom';
+import { MyAccountName, Token } from '../../../Atom/atom';
 
 //
 import Modal from '../../Modal/Modal';
 import AlertModal from '../../Modal/Alert';
 
 const PostHeader = ({ postsData }) => {
+  const URL = 'https://api.mandarin.weniv.co.kr';
   // console.log(postsData);
   const getMyAccounName = useRecoilValue(MyAccountName);
+  const getMyToken = useRecoilValue(Token);
+
   // console.log(getMyAccounName);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
@@ -25,18 +27,38 @@ const PostHeader = ({ postsData }) => {
     navigate('/posteditpage', { state: postsData });
   };
 
+  const postDelete = async e => {
+    e.preventDefault();
+
+    try {
+      const req = {
+        method: 'DELETE',
+        headers: {
+          Authorization: 'Bearer ' + getMyToken,
+          'Content-type': 'application/json',
+        },
+      };
+      const response = await fetch(URL + '/post/' + postsData.id, req);
+      const data = await response.json();
+      console.log(data);
+      closeModal();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      navigate('/postpage');
+    }
+  };
+
   // 모달 연결
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSModalVisible, setIsSModalVisible] = useState(false);
   const [isOtherSModalVisible, setIsOtherSModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [isReporModalVisible, setIsReporModalVisible] = useState(false);
 
-  // alert 모달 닫아주는
+  // 모달 닫아주는
   const closeModal = () => {
-    setIsModalVisible(false);
+    setIsSModalVisible(false);
+    setIsOtherSModalVisible(false);
     setIsDeleteModalVisible(false);
-    setIsReporModalVisible(false);
   };
   // 게시글이 내 거일때 열어주는 모달
   const openSModal = () => {
@@ -46,20 +68,10 @@ const PostHeader = ({ postsData }) => {
   const openSOtherModal = () => {
     setIsOtherSModalVisible(true);
   };
-  // 수정
-  const handleEdit = () => {
-    setIsSModalVisible(false);
-    setIsModalVisible(true);
-  };
   // 삭제
   const handeleDelete = () => {
     setIsSModalVisible(false);
     setIsDeleteModalVisible(true);
-  };
-  // 신고
-  const handleReport = () => {
-    setIsOtherSModalVisible(false);
-    setIsReporModalVisible(true);
   };
 
   return (
@@ -67,42 +79,34 @@ const PostHeader = ({ postsData }) => {
       <SPostHeaderDiv>
         <Link className="wrapper" to="/profiledetailpage" state={postsData.author?.accountname}>
           {/* 프로필 이미지 api로 받아와서 수정해야함 */}
-          <img src={basicProfileImg} alt="" />
+          <img src={postsData.author.image} alt="" />
           <div>
             <SPostUserName>{username}</SPostUserName>
-            <SPostUserId>{accountname}</SPostUserId>
+            <SPostUserId>
+              <span>@_</span>
+              {accountname}
+            </SPostUserId>
           </div>
         </Link>
-        {/* {accountname === getMyAccounName ? <button onClick={goToPostEdit}></button> : <button></button>} */}
         {accountname === getMyAccounName ? (
           <button className="postSet" onClick={openSModal}></button>
         ) : (
           <button className="postSet" onClick={openSOtherModal}></button>
         )}
         {isSModalVisible && (
-          <Modal>
+          <Modal onCancel={closeModal}>
             <p onClick={handeleDelete}>삭제</p>
-            <p onClick={handleEdit}>수정</p>
+            <p onClick={goToPostEdit}>수정</p>
           </Modal>
         )}
         {isOtherSModalVisible && (
-          <Modal>
-            <p onClick={handleReport}>신고</p>
+          <Modal onCancel={closeModal}>
+            <p onClick={closeModal}>신고</p>
           </Modal>
         )}
-        {isModalVisible && (
-          <AlertModal confirmText="수정" onConfirm={goToPostEdit} onCancel={closeModal}>
-            게시글을 수정할까요?
-          </AlertModal>
-        )}
         {isDeleteModalVisible && (
-          <AlertModal confirmText="삭제" onConfirm={closeModal} onCancel={closeModal}>
+          <AlertModal confirmText="삭제" onConfirm={postDelete} onCancel={closeModal}>
             게시글을 삭제할까요?
-          </AlertModal>
-        )}
-        {isReporModalVisible && (
-          <AlertModal confirmText="신고" onConfirm={closeModal} onCancel={closeModal}>
-            게시글을 신고할까요?
           </AlertModal>
         )}
       </SPostHeaderDiv>
@@ -124,6 +128,7 @@ const SPostHeaderDiv = styled.div`
       width: 42px;
       height: 42px;
       border-radius: 50%;
+      object-fit: cover;
     }
     // 게시물 작성자 이름과 아이디 감싼거
     div {

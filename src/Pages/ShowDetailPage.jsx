@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import ShowDeatailTopBar from '../Components/Article/ShowDeatailTopBar';
+import ShowDeatailTopBar from '../Components/Article/ShowDetailTopBar';
 import ShowDetailInfo from '../Components/Article/ShowDetailInfo';
 import BottomNav from '../Components/Common/BottomNav';
 import { useNavigate } from 'react-router-dom';
 
 const ShowDetailPage = () => {
   // useTokenCheck();
-  const detailData = useLocation().state;
+  const [detailData, keyword] = useLocation().state;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const ShowDetailPage = () => {
     <>
       <SShowDetail>
         <div className="shadowStyle" />
-        <ShowDeatailTopBar data={detailData} />
+        <ShowDeatailTopBar data={detailData} keyword={keyword} />
         <div className="posterImg">{detailData && <img src={detailData.MAIN_IMG} alt="포스터" />}</div>
         {detailData && <ShowDetailInfo detailData={detailData} />}
       </SShowDetail>

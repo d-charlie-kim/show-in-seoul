@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ListOff from '../../../Assets/Icon/icon-post-list-off.svg';
+import ListOn from '../../../Assets/Icon/icon-post-list-on.svg';
 import AlbumOff from '../../../Assets/Icon/icon-post-album-off.svg';
 
 const PostLayoutButtons = () => {
@@ -25,17 +25,18 @@ const SLayoutButtons = styled.div`
     flex-grow: 1;
     flex-basis: auto;
     border-top: 1px solid var(--gray);
-    border-bottom: 1px solid var(--gray);
     box-sizing: border-box;
   }
 `;
 
 const SListButton = styled.button`
   border-right: 1px solid var(--gray);
-  background: url(${ListOff}) no-repeat center;
+  background: url(${ListOn}) no-repeat center;
+  border-bottom: 1px solid var(--deepgray);
 `;
 
 const SGridButton = styled.button`
   border-left: none;
   background: url(${AlbumOff}) no-repeat center;
+  border-bottom: 1px solid var(--gray);
 `;

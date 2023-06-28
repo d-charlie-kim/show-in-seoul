@@ -25,7 +25,6 @@ const PostDetailPage = () => {
 
   const getPostsData = useLocation().state;
   const postsId = getPostsData.id;
-  // console.log(getPostsData);
 
   const GetPostComments = () => {
     const [commentData, setCommentData] = useState([]);
@@ -51,6 +50,7 @@ const PostDetailPage = () => {
   };
 
   const postsComments = GetPostComments();
+  // console.log(postsComments);
 
   return (
     <>
@@ -63,15 +63,17 @@ const PostDetailPage = () => {
         <Post postsData={getPostsData} />
         <SCommentsWrapper>
           {postsComments?.length > 0 ? (
-            postsComments.map(postsComments => <Comments postsComments={postsComments} />)
+            postsComments.map(postsComments => (
+              <Comments postsData={getPostsData} postsId={postsId} postsComments={postsComments} />
+            ))
           ) : (
             <p style={{ display: 'none' }}>댓글이 존재하지 않습니다.</p>
           )}
         </SCommentsWrapper>
       </SPostDetailContent>
       <SContainer>
-        <SCommentDiv name="" action="" method="">
-          <CommentsForm postsData={getPostsData} postsId={postsId} />
+        <SCommentDiv>
+          <CommentsForm postsComments={postsComments} postsData={getPostsData} postsId={postsId} />
         </SCommentDiv>
       </SContainer>
     </>
@@ -133,7 +135,7 @@ const SContainer = styled.div`
 
 const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
-  padding: 12px 16px;
+  padding: 12px 16px 18px;
   width: 390px;
 `;
 
@@ -151,6 +153,8 @@ const SCommentDiv = styled.div`
     width: 36px;
     height: 36px;
     margin-left: 16px;
+    object-fit: cover;
+    border-radius: 50%;
   }
   form {
     margin-left: 18px;
