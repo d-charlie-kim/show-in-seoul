@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { Token, MyAccountName } from '../../Atom/atom';
@@ -25,8 +25,7 @@ const Comments = ({ postsComments, postsId, postsData }) => {
           'Content-type': 'application/json',
         },
       });
-      const res = await response.json();
-      // console.log(res);
+      // const res = await response.json();
       setIsDeleteModalVisible(false);
     } catch (error) {
       console.error(error);

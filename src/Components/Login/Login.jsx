@@ -31,7 +31,7 @@ function Login() {
     e.preventDefault();
 
     // 이메일 형식 확인
-    const validResult = await IsValidEmailAPI(email);
+    // const validResult = await IsValidEmailAPI(email);
 
     // 비밀번호 형식 확인
     if (!password || !validatePassword(password)) {

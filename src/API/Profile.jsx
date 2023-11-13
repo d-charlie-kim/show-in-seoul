@@ -68,6 +68,7 @@ const GetOtherProfileAPI = accountname => {
   };
   useEffect(() => {
     getOtherProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return profileData;
 };

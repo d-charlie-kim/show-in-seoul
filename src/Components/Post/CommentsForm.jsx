@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Token, MyAccountName } from '../../Atom/atom';
 import { useNavigate } from 'react-router-dom';
@@ -51,7 +51,7 @@ const CommentsForm = ({ postsId, postsData }) => {
           },
         }),
       });
-      const res = await response.json();
+      // const res = await response.json();
       // console.log(res);
       textRef.current.value = '';
       setTextareaValue('');

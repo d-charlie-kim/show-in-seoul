@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import { useLocation } from 'react-router-dom';
 import { Token } from '../Atom/atom';
 // 공통 컴포넌트
-import TopBar from '../Components/Common/TopBar';
+// import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
 import CommentsForm from '../Components/Post/CommentsForm';
