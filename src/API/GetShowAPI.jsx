@@ -8,7 +8,7 @@
 const GetShowAPI = async setShow => {
   try {
     const response = await fetch(
-      '//openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/1/1',
+      'http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/1/1',
       // requestOptions,
     );
 
@@ -25,7 +25,7 @@ const GetShowAPI = async setShow => {
       const end = start + 999;
       loadingList.push(
         fetch(
-          `//openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/${start}/${end}`,
+          `http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/${start}/${end}`,
           // requestOptions,
         ).then(response => {
           if (!response.ok) throw new Error(`ERROR on ${i + 1}`);
