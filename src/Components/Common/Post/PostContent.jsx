@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PostContent = ({ postsData }) => {
-  // console.log(postsData);
   const postsDataArr = postsData.content.split('!#%&@$^))+');
-  // console.log(postsDataArr);
 
   return (
     <>

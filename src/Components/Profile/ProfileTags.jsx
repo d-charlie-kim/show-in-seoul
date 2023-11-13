@@ -7,7 +7,6 @@ const ProfileTags = ({ text, status, getTags, setTags, setCount, getCount }) => 
   const setWarning = useSetRecoilState(InfoWarning);
 
   const toggle = e => {
-    console.log(getCount);
     if (getCount === 4 && !e.target.classList.contains('active')) {
       setWarning(true);
       return;

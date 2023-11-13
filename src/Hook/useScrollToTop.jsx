@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useRef, useState, useEffect } from 'react';
 
 const useScrollToTop = () => {
@@ -11,22 +12,31 @@ const useScrollToTop = () => {
     }
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (sectionLayoutRef.current) {
       setScrollPosition(sectionLayoutRef.current.scrollTop);
     }
-  };
+  }, [sectionLayoutRef]);
 
   useEffect(() => {
-    if (sectionLayoutRef.current) {
-      sectionLayoutRef.current.addEventListener('scroll', handleScroll);
-    }
-    return () => {
-      if (sectionLayoutRef.current) {
-        sectionLayoutRef.current.removeEventListener('scroll', handleScroll);
+    const currentRef = sectionLayoutRef.current;
+
+    const scrollHandler = () => {
+      if (currentRef) {
+        setScrollPosition(currentRef.scrollTop);
       }
     };
-  }, []);
+
+    if (currentRef) {
+      currentRef.addEventListener('scroll', scrollHandler);
+    }
+
+    return () => {
+      if (currentRef) {
+        currentRef.removeEventListener('scroll', scrollHandler);
+      }
+    };
+  }, [sectionLayoutRef]);
 
   return {
     sectionLayoutRef,

@@ -18,14 +18,13 @@ const Comments = ({ postsComments, postsId, postsData }) => {
   // 댓글 삭제 기능
   const DeleteComment = async () => {
     try {
-      const response = await fetch(URL + '/post/' + postsId + '/comments/' + commentId, {
+      await fetch(URL + '/post/' + postsId + '/comments/' + commentId, {
         method: 'DELETE',
         headers: {
           Authorization: 'Bearer ' + getMyToken,
           'Content-type': 'application/json',
         },
       });
-      // const res = await response.json();
       setIsDeleteModalVisible(false);
     } catch (error) {
       console.error(error);

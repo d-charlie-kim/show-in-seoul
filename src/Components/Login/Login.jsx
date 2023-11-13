@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import SInputBox from '../Common/InputBox';
 import Button from '../Common/Button';
-import { IsValidEmailAPI, LoginAPI } from '../../API/User';
+import { LoginAPI } from '../../API/User';
 import { useNavigate } from 'react-router-dom';
 import { Token, MyAccountName, IsLoginState } from '../../Atom/atom';
 import { useSetRecoilState } from 'recoil';
@@ -57,12 +57,10 @@ function Login() {
       if (data.status === 422) {
         setFailedMessage('*이메일 / 비밀번호를 확인해주세요.');
       } else if (data.user) {
-        console.log('로그인 성공!');
         setUserToken(data.user.token);
         setMyAccountName(data.user.accountname);
         loginSuccess();
       } else {
-        console.log('로그인 예외');
       }
     } catch (error) {
       console.error(error);

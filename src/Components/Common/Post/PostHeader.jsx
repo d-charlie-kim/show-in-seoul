@@ -15,11 +15,9 @@ import AlertModal from '../../Modal/Alert';
 
 const PostHeader = ({ postsData }) => {
   const URL = 'https://api.mandarin.weniv.co.kr';
-  // console.log(postsData);
   const getMyAccounName = useRecoilValue(MyAccountName);
   const getMyToken = useRecoilValue(Token);
 
-  // console.log(getMyAccounName);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
   const navigate = useNavigate();
@@ -38,9 +36,7 @@ const PostHeader = ({ postsData }) => {
           'Content-type': 'application/json',
         },
       };
-      const response = await fetch(URL + '/post/' + postsData.id, req);
-      const data = await response.json();
-      console.log(data);
+      await fetch(URL + '/post/' + postsData.id, req);
       closeModal();
     } catch (e) {
       console.error(e);

@@ -74,6 +74,7 @@ const ProfileEditPage = () => {
   useEffect(() => {
     getProfile();
     setIsValidInputs(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

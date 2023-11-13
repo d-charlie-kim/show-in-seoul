@@ -24,6 +24,7 @@ const SearchPage = () => {
     } else if (keyword === '') {
       setSearchResult([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   console.log('검색페이지 렌더링...');

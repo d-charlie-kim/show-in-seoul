@@ -28,6 +28,7 @@ const useDataFiltering = (getShow, setShowData, interestTagCount, areaTagCount) 
       }
     }
     setShowData(resultData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getShow, setShowData]);
 };
 

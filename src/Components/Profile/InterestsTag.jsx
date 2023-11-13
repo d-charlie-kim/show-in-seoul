@@ -12,7 +12,6 @@ const InterestsTag = ({ etc }) => {
   const setInterestTagcount = useSetRecoilState(CategoryInterestTagCount);
   const getInterestTagCount = useRecoilValue(CategoryInterestTagCount);
 
-  console.log('Interests: ', getInterestTagCount);
   return (
     <SInterests>
       {getInterestTags.map(el => {

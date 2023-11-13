@@ -22,7 +22,6 @@ const CommentsForm = ({ postsId, postsData }) => {
       };
       const response = await fetch(URL + '/profile/' + getMyAccountName, req);
       const data = await response.json();
-      // console.log(data.profile.image);
       setPI(data.profile.image);
       return data;
     } catch (e) {
@@ -30,16 +29,14 @@ const CommentsForm = ({ postsId, postsData }) => {
     }
   };
   myProfileImg();
-  // console.log(pI);
 
   const handleInputChange = e => {
     setTextareaValue(e.target.value);
-    // console.log(textareaValue);
   };
 
   const postComment = async e => {
     try {
-      const response = await fetch(URL + '/post/' + postsId + '/comments', {
+      await fetch(URL + '/post/' + postsId + '/comments', {
         method: 'POST',
         headers: {
           Authorization: 'Bearer ' + getMyToken,
@@ -51,8 +48,6 @@ const CommentsForm = ({ postsId, postsData }) => {
           },
         }),
       });
-      // const res = await response.json();
-      // console.log(res);
       textRef.current.value = '';
       setTextareaValue('');
     } catch (error) {

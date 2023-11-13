@@ -12,7 +12,6 @@ const AreaTag = () => {
   const setAreaTagcount = useSetRecoilState(CategoryAreaTagCount);
   const getAreaTagCount = useRecoilValue(CategoryAreaTagCount);
 
-  console.log('Area:  ', getAreaTagCount);
   return (
     <SArea>
       {getAreaTags.map(el => {

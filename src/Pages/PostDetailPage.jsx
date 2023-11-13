@@ -45,12 +45,12 @@ const PostDetailPage = () => {
     };
     useEffect(() => {
       getPostComments();
-    }, [getPostsData]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return commentData;
   };
 
   const postsComments = GetPostComments();
-  // console.log(postsComments);
 
   return (
     <>

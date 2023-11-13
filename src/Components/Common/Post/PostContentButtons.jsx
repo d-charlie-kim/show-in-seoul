@@ -29,11 +29,8 @@ const PostContentButtons = ({ postsData }) => {
       };
       const response = await fetch(URL + `/post/${postsData.id}/${likeValid ? 'unheart' : 'heart'}`, req);
       const data = await response.json();
-      // console.log(data);
       setLikeCount(data.post.heartCount);
       setLikeValid(data.post.hearted);
-      // console.log(data.post.heartCount);
-      // console.log(data.post.hearted);
     } catch (e) {
       console.error(e);
     }
@@ -53,7 +50,6 @@ const PostContentButtons = ({ postsData }) => {
         };
         const response = await fetch(URL + '/post/' + postsData.id, req);
         const data = await response.json();
-        // console.log(data.post);
         setPost(data.post);
       } catch (e) {
         console.error(e);

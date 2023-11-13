@@ -23,7 +23,6 @@ const ProfileInterests = ({ profile, introGenerator }) => {
           newArr[idx].push(true);
         }
       });
-      console.log(newArr);
       return newArr;
     });
     setUserInterestTagCount(count);
@@ -31,10 +30,12 @@ const ProfileInterests = ({ profile, introGenerator }) => {
 
   useEffect(() => {
     if (getUserInterestTagCount !== 0) introGenerator();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getUserInterestTagCount]);
 
   useEffect(() => {
     updateCurrentTags();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
   return (

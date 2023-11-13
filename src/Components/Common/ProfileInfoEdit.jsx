@@ -55,6 +55,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
     } else {
       setIsValidInputs(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validAccountName, validUserName]);
 
   return (

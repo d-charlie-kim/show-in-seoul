@@ -41,7 +41,6 @@ const ProfileSettingPage = () => {
 
   const followingAdmin = async () => {
     const response = await FollowAPI(profile.accountname);
-    console.log(response);
     if (response !== null) {
       console.log('팔로잉 성공');
     } else {
@@ -86,12 +85,14 @@ const ProfileSettingPage = () => {
     if (isValidInputs && profile.email && profile.password) {
       setBtnAble(true);
     } else setBtnAble(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isValidInputs]);
 
   useEffect(() => {
     if (location.state === null && !profile.email) {
       navigate('/signuppage');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

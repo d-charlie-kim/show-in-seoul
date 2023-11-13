@@ -39,7 +39,6 @@ const PostingPage = () => {
       });
 
       const res = await response.json();
-      // console.log(res);
 
       textRef.current.value = '';
       setTextareaValue('');
@@ -56,7 +55,6 @@ const PostingPage = () => {
   // textarea에 타이핑 되는 내용들 가져 오는
   const handleInputChange = e => {
     setTextareaValue(e.target.value);
-    // console.log(textareaValue);
   };
 
   return (

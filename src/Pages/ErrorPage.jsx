@@ -21,7 +21,6 @@ const ErrorCheck = ({ errorCheck }) => {
 const ErrorPage = () => {
   // error 가 나오기 이전 페이지 정보 확인
   const errorCheck = useLocation().state;
-  console.log(errorCheck);
 
   return (
     <SContainer>
