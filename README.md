@@ -106,7 +106,7 @@
     |       Like.jsx
     |       PostAPI.jsx
     |       Profile.jsx
-    |       useFollow.jsx
+    |       useAdmin.jsx
     |       useProfile.jsx
     |       User.jsx
     |
