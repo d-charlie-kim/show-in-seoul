@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import { AdminToken } from '../Atom/atom';
 const URL = 'https://api.mandarin.weniv.co.kr';
 
-const useFollow = () => {
+const useAdmin = () => {
   const getAdminToken = useRecoilValue(AdminToken);
 
   const FollowAPI = async accountname => {
@@ -26,7 +26,6 @@ const useFollow = () => {
   };
 
   const GetFeedAPI = async () => {
-    const getAdminToken = useRecoilValue(AdminToken);
     try {
       const req = {
         method: 'GET',
@@ -49,4 +48,4 @@ const useFollow = () => {
   return { GetFeedAPI, FollowAPI };
 };
 
-export default useFollow;
+export default useAdmin;

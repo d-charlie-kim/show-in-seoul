@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '../Components/Common/Button';
 import ProfileInfoEdit from '../Components/Common/ProfileInfoEdit';
-import useFollow from '../API/useFollow';
+import useAdmin from '../API/useAdmin';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SignUpAPI, LoginAPI } from '../API/User';
 import { Token, MyAccountName, UserInterestTags, IsLoginState } from '../Atom/atom';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
+import useUpdateToken from '../Hook/useUpdateToken';
 
 const ProfileSettingPage = () => {
-  const { FollowAPI } = useFollow();
+  const { FollowAPI } = useAdmin();
   const navigate = useNavigate();
   const location = useLocation();
   const setToken = useSetRecoilState(Token);
   const setMyAccountName = useSetRecoilState(MyAccountName);
   const setIsLoginState = useSetRecoilState(IsLoginState);
   const getUserInterestTags = useRecoilValue(UserInterestTags);
+  const { updateAdminToken } = useUpdateToken();
   const [btnAble, setBtnAble] = useState(false);
   const [isValidInputs, setIsValidInputs] = useState(false);
   const [profile, setProfile] = useState({
@@ -40,6 +42,7 @@ const ProfileSettingPage = () => {
   };
 
   const followingAdmin = async () => {
+    updateAdminToken();
     const response = await FollowAPI(profile.accountname);
     if (response !== null) {
       console.log('팔로잉 성공');

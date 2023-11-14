@@ -55,7 +55,7 @@ const PostPage = () => {
     <>
       <TopBar />
       <SUl ref={scrollController.sectionLayoutRef} onScroll={scrollController.handleScroll}>
-        {postsData.length > 0 ? (
+        {postsData?.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
           <li style={{ display: 'none' }} className="noContent">

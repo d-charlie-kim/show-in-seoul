@@ -6,6 +6,7 @@ import { LoginAPI } from '../../API/User';
 import { useNavigate } from 'react-router-dom';
 import { Token, MyAccountName, IsLoginState } from '../../Atom/atom';
 import { useSetRecoilState } from 'recoil';
+import useUpdateToken from '../../Hook/useUpdateToken';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -15,6 +16,7 @@ function Login() {
   const setUserToken = useSetRecoilState(Token);
   const setMyAccountName = useSetRecoilState(MyAccountName);
   const setIsLoginState = useSetRecoilState(IsLoginState);
+  const { updateAdminToken } = useUpdateToken();
 
   // 비밀번호가 6자 이상인지 검사
   const validatePassword = password => {
@@ -51,6 +53,7 @@ function Login() {
       // 로그인 성공 시 실행할 동작
       const loginSuccess = () => {
         setIsLoginState(1);
+        updateAdminToken();
         navigate('/mainpage');
       };
 
