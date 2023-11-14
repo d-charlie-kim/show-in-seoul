@@ -9,8 +9,8 @@ import { useSetRecoilState } from 'recoil';
 import useUpdateToken from '../../Hook/useUpdateToken';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('showinseoul@test.com');
+  const [password, setPassword] = useState('showinseoul');
   const [FailedMessage, setFailedMessage] = useState('');
   const navigate = useNavigate();
   const setUserToken = useSetRecoilState(Token);
