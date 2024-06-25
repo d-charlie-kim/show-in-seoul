@@ -10,7 +10,7 @@ import AlertModal from '../Modal/Alert';
 const Comments = ({ postsComments, postsId, postsData }) => {
   const commentDate = postsComments.createdAt.split('T');
   const commentId = postsComments.id;
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const getMyToken = useRecoilValue(Token);
   const getMyAccountName = useRecoilValue(MyAccountName);
   const commentAccountName = postsComments.author.accountname;

@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import { Token } from '../Atom/atom';
 import { useState, useEffect } from 'react';
-const URL = process.env.URL;
+const URL = process.env.REACT_APP_URL;
 
 const PostPostAPI = async post => {
   const getMyToken = useRecoilValue(Token);
@@ -26,7 +26,7 @@ const PostPostAPI = async post => {
   }
 };
 const GetUserPostAPI = accountname => {
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
 
   const [postData, setPostData] = useState([]);
   const getMyToken = useRecoilValue(Token);

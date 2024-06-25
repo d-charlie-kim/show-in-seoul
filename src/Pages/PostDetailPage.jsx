@@ -20,7 +20,7 @@ const PostDetailPage = () => {
     navigate('/postpage');
   };
 
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const getMyToken = useRecoilValue(Token);
 
   const getPostsData = useLocation().state;

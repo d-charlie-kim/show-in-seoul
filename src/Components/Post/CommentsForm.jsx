@@ -4,7 +4,7 @@ import { Token, MyAccountName } from '../../Atom/atom';
 import { useNavigate } from 'react-router-dom';
 
 const CommentsForm = ({ postsId, postsData }) => {
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const getMyToken = useRecoilValue(Token);
   const getMyAccountName = useRecoilValue(MyAccountName);
   const [textareaValue, setTextareaValue] = useState('');

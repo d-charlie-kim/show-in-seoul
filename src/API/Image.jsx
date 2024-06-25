@@ -1,4 +1,4 @@
-const URL = process.env.URL;
+const URL = process.env.REACT_APP_URL;
 
 const useImage = () => {
   const UploadImgAPI = async formData => {

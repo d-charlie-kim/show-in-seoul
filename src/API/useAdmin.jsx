@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { AdminToken } from '../Atom/atom';
-const URL = process.env.URL;
+const URL = process.env.REACT_APP_URL;
 
 const useAdmin = () => {
   const getAdminToken = useRecoilValue(AdminToken);

@@ -21,7 +21,7 @@ const PostPage = () => {
   const scrollController = useScrollToTop();
 
   // 내가 팔로한 유저들의 게시글 정보 불러오는 api
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const GetPostFeed = () => {
     const [feedData, setFeedData] = useState([]);
 

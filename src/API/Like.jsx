@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { Token } from '../Atom/atom';
-const URL = process.env.URL;
+const URL = process.env.REACT_APP_URL;
 
 const HeartPostAPI = async (postId) => {
 	const getMyToken = useRecoilValue(Token);

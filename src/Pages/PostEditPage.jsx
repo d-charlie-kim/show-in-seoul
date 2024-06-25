@@ -8,7 +8,7 @@ import TopBar from '../Components/Common/TopBar';
 import { Token } from '../Atom/atom';
 
 const PostEditPage = () => {
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const [textareaValue, setTextareaValue] = useState('');
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);

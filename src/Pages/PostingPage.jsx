@@ -10,7 +10,7 @@ import { Token } from '../Atom/atom';
 import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostingPage = () => {
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const [textareaValue, setTextareaValue] = useState('');
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);

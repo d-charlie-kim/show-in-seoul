@@ -14,7 +14,7 @@ import Modal from '../../Modal/Modal';
 import AlertModal from '../../Modal/Alert';
 
 const PostHeader = ({ postsData }) => {
-  const URL = process.env.URL;
+  const URL = process.env.REACT_APP_URL;
   const getMyAccounName = useRecoilValue(MyAccountName);
   const getMyToken = useRecoilValue(Token);
 
