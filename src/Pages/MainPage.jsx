@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import TotalCount from '../Components/Article/TotalCount';
@@ -28,21 +28,20 @@ const MainPage = () => {
   // scroll to top
   const scrollController = useScrollToTop();
 
-  useMemo(() => {
+  useEffect(() => {
     // 로그인 이후 최초 접속 시 API 통신
-    //  if (isLoginState === 1) {
-    const fetchData = async () => {
-      try {
-        // await GetShowAPI(setShow);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    // fetchData();
-    console.log('useMemo 데이터 가져오기 실행...');
-    setIsLoginState(2);
-    // };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (isLoginState === 1) {
+      const fetchData = async () => {
+        try {
+          await GetShowAPI(setShow);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+      console.log('useEffect 데이터 가져오기 실행...');
+      setIsLoginState(2);
+    }
   }, [isLoginState]);
 
   // 첫번째 렌더링에 skeleton 보여주기 위한 조건
@@ -56,13 +55,13 @@ const MainPage = () => {
     <>
       <TopBar />
 
-      {/* <TotalCount data={showData} totalData={getShow} setData={setShowData} location={location} /> */}
+      <TotalCount data={showData} totalData={getShow} setData={setShowData} location={location} />
       {isFirstRender ? (
         <Skeleton />
       ) : showData.length !== 0 ? (
         <SectionLayout ref={scrollController.sectionLayoutRef} onScroll={scrollController.handleScroll}>
           <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
-          {/* {getShow && <FeedContents showInfo={showData} location={location.state} />} */}
+          {getShow && <FeedContents showInfo={showData} location={location.state} />}
           <TopBtn
             scrollPosition={scrollController.scrollPosition}
             sectionLayoutRef={scrollController.sectionLayoutRef}
