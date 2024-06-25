@@ -10,7 +10,7 @@ import { Token } from '../Atom/atom';
 import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostingPage = () => {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.URL;
   const [textareaValue, setTextareaValue] = useState('');
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);

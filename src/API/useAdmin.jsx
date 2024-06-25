@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { AdminToken } from '../Atom/atom';
-const URL = 'https://api.mandarin.weniv.co.kr';
+const URL = process.env.URL;
 
 const useAdmin = () => {
   const getAdminToken = useRecoilValue(AdminToken);

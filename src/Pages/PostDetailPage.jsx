@@ -20,7 +20,7 @@ const PostDetailPage = () => {
     navigate('/postpage');
   };
 
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.URL;
   const getMyToken = useRecoilValue(Token);
 
   const getPostsData = useLocation().state;

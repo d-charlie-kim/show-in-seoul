@@ -10,7 +10,7 @@ import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.svg';
 import iconComment from '../../../Assets/Icon/icon-message-circle.svg';
 
 const PostContentButtons = ({ postsData }) => {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.URL;
   const getMyToken = useRecoilValue(Token);
 
   const [likeValid, setLikeValid] = useState(postsData?.hearted);

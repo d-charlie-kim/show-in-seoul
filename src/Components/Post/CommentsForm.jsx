@@ -4,7 +4,7 @@ import { Token, MyAccountName } from '../../Atom/atom';
 import { useNavigate } from 'react-router-dom';
 
 const CommentsForm = ({ postsId, postsData }) => {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.URL;
   const getMyToken = useRecoilValue(Token);
   const getMyAccountName = useRecoilValue(MyAccountName);
   const [textareaValue, setTextareaValue] = useState('');

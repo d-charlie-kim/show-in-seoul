@@ -1,4 +1,4 @@
-const URL = 'https://api.mandarin.weniv.co.kr';
+const URL = process.env.URL;
 
 const useImage = () => {
   const UploadImgAPI = async formData => {

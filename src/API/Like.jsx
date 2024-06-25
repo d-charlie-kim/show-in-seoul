@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { Token } from '../Atom/atom';
-const URL = "https://api.mandarin.weniv.co.kr";
+const URL = process.env.URL;
 
 const HeartPostAPI = async (postId) => {
 	const getMyToken = useRecoilValue(Token);

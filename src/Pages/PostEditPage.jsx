@@ -8,7 +8,7 @@ import TopBar from '../Components/Common/TopBar';
 import { Token } from '../Atom/atom';
 
 const PostEditPage = () => {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.URL;
   const [textareaValue, setTextareaValue] = useState('');
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);

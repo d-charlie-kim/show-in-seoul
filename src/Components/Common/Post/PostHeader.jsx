@@ -14,7 +14,7 @@ import Modal from '../../Modal/Modal';
 import AlertModal from '../../Modal/Alert';
 
 const PostHeader = ({ postsData }) => {
-  const URL = 'https://api.mandarin.weniv.co.kr';
+  const URL = process.env.URL;
   const getMyAccounName = useRecoilValue(MyAccountName);
   const getMyToken = useRecoilValue(Token);
 
